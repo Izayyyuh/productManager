@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 const Form = (props) => {
     //keep track of  what is being typed via useState hook
@@ -25,21 +26,26 @@ const Form = (props) => {
     }
 
     return (
-        <form onSubmit={onSubmitHandler}>
-            <p>
-                <label>Title:</label>
-                <input type="text" onChange={(e) =>setTitle(e.target.value)} />
-            </p>
-            <p>
-                <label>Price:</label>
-                <input type="number" onChange={(e) =>setPrice(e.target.value)} />
-            </p>
-            <p>
-                <label>Description:</label>
-                <input type="text" onChange={(e) =>setDescription(e.target.value)} />
-            </p>
-            <input type="submit" />
-        </form>
+        <div>
+            <form onSubmit={onSubmitHandler}>
+                <div className='mx-auto' style={{width: "200px"}}>
+                    <h1>Add Product</h1>
+                    <p className='form-group'>
+                        <label>Title:</label>
+                        <input type="text" className='col-auto' onChange={(e) =>setTitle(e.target.value)} />
+                    </p>
+                    <p className='form-group'>
+                        <label>Price (USD):</label>
+                        <input type="number" className='col-auto' onChange={(e) =>setPrice(e.target.value)} />
+                    </p>
+                    <p className='form-group'>
+                        <label>Description:</label>
+                        <input type="text" className='col-auto' onChange={(e) =>setDescription(e.target.value)} />
+                    </p>
+                    <input className='btn btn-primary' type="submit" />
+                </div>
+            </form>
+        </div>
     )
 }
 export default Form;

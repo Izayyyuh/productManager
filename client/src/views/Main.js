@@ -6,6 +6,9 @@ const Main = (props) => {
     
     const {product, setProduct} = useState([]);
     const [products, setProducts] = useState([]);
+    const removeFromDom = productId => {
+        setProduct(products.filter(product => product.id !== productId));
+    }
 
     
     return (
@@ -13,7 +16,7 @@ const Main = (props) => {
     	{/* Form and Product List can both utilize the getter and setter established in their parent component: */}
            <Form product={product} setProduct={setProduct} />
             <hr/>
-           <ProductList products={products} setProducts={setProducts} />
+           <ProductList products={products} setProducts={setProducts} removeFromDom={removeFromDom} />
         </div>
     )
 }
